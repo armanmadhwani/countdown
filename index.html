@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Countdown</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
         body {
             margin: 0;
             height: 100vh;
@@ -16,6 +18,16 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             position: relative;
+            flex-direction: column;
+        }
+
+        .birthday-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+            z-index: 2;
         }
 
         .countdown {
@@ -168,6 +180,7 @@
         <div class="balloon"></div>
         <div class="balloon"></div>
     </div>
+    <div class="birthday-text">Countdown to the Big Day!</div>
     <div class="countdown" id="countdown">
         <div>
             <span id="days">0</span>
@@ -212,7 +225,7 @@
         }
 
         function redirectToPage() {
-            window.location.href = "https://nandinisbirthday.vercel.app/"; // Replace with your desired URL
+            window.location.href = "https://www.example.com"; // Replace with your desired URL
         }
 
         setInterval(updateCountdown, 1000);
