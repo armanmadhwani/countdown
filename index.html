@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown to January 19, 2025</title>
+    <title>Birthday Countdown</title>
     <style>
         body {
             margin: 0;
@@ -11,16 +11,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             color: white;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
+            position: relative;
         }
 
         .countdown {
             display: flex;
             gap: 20px;
             text-align: center;
+            z-index: 2;
         }
 
         .countdown div {
@@ -29,6 +31,7 @@
             border-radius: 12px;
             padding: 20px 40px;
             animation: fadeInScale 1.2s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
 
         .countdown div span {
@@ -49,16 +52,17 @@
             padding: 15px 30px;
             font-size: 1.2rem;
             color: white;
-            background: #f4d03f;
+            background: #ffcc00;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-transform: uppercase;
             animation: fadeIn 1s ease-in-out;
+            z-index: 2;
         }
 
         #viewButton:hover {
-            background: #ffcc00;
+            background: #ffd700;
         }
 
         @keyframes fadeInScale {
@@ -78,8 +82,8 @@
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             }
             50% {
-                color: #f4d03f;
-                text-shadow: 0 0 20px rgba(244, 208, 63, 0.8);
+                color: #ffcc00;
+                text-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
             }
         }
 
@@ -91,9 +95,68 @@
                 opacity: 1;
             }
         }
+
+        .balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #ff6f61 50%, #d64541 100%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon:nth-child(2) {
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3) {
+            left: 40%;
+            animation-delay: 2s;
+            background: radial-gradient(circle, #ffcc00 50%, #f39c12 100%);
+        }
+
+        .balloon:nth-child(4) {
+            left: 60%;
+            animation-delay: 3s;
+            background: radial-gradient(circle, #8e44ad 50%, #5e3370 100%);
+        }
+
+        .balloon:nth-child(5) {
+            left: 80%;
+            animation-delay: 4s;
+            background: radial-gradient(circle, #3498db 50%, #1f618d 100%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="balloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
     <div class="countdown" id="countdown">
         <div>
             <span id="days">0</span>
@@ -112,7 +175,7 @@
             <label>Seconds</label>
         </div>
     </div>
-    <button id="viewButton" onclick="redirectToPage()">View</button>
+    <button id="viewButton" onclick="redirectToPage()">Celebrate</button>
 
     <script>
         function updateCountdown() {
